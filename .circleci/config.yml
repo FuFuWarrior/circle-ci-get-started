@@ -24,22 +24,22 @@ jobs:
       docker:
         - image: cimg/base:stable
        
-       steps:
+      steps:
         - chekcout
         - run: 'text to output here" > output.txt'
-       
-       - persist_to_workspace:
-          root: ./tmp/file
-          paths: output.txt
+        
+        - persist_to_workspace:
+            root: ./tmp/file
+            paths: output.txt
   print_output_file:
       docker:
         - image: cimg/base:stable
         
       steps:
       # attach the files you persisted in the doing-things-job
-      - attach_workspace:
-          at: ./tmp/file
-      - run: cat output.txt
+        - attach_workspace:
+            at: ./tmp/file
+        - run: cat output.txt
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
