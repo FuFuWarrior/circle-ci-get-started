@@ -20,7 +20,7 @@ jobs:
       
       - run: echo ${NAME}
     
-   save_hello_world_output:
+  save_hello_world_output:
       docker:
         - image: cimg/base:stable
        
@@ -31,7 +31,7 @@ jobs:
        - persist_to_workspace:
           root: ./tmp/file
           paths: output.txt
-   print_output_file:
+  print_output_file:
       docker:
         - image: cimg/base:stable
         
