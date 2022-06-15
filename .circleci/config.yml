@@ -19,10 +19,11 @@ jobs:
           command: "echo Hello, World!"
     
     print_env_variable:
-    docker:
+      
+      docker:
         - image: circleci/node:13.8.0
     
-    steps:
+      steps:
         - checkout
         - run: echo ${NAME}  
 
