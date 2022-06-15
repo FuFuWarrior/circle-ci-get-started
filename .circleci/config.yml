@@ -26,7 +26,7 @@ jobs:
        
       steps:
         - checkout
-        - run: 'text to output here' > output.txt
+        - run: "text to output here" > output.txt
         
         - persist_to_workspace:
             root: ./tmp/file
