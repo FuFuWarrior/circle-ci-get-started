@@ -26,4 +26,3 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
-      - print_env_variable
