@@ -39,5 +39,5 @@ workflows:
   create_infrastructure:
       jobs:
         - create_infrastructure
-        - setup_ansible
+        - setup_ansible:
             requires: create_infrastructure
