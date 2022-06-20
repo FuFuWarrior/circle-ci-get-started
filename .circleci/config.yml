@@ -40,4 +40,4 @@ workflows:
       jobs:
         - create_infrastructure
         - setup_ansible:
-            requires: create_infrastructure
+            requires: [create_infrastructure]
