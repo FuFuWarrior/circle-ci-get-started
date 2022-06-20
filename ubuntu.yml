@@ -33,3 +33,7 @@ Resources:
           FromPort: '9030'
           ToPort: '9030'
           CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: '0'
+          ToPort: '90'
+          CidrIp: 0.0.0.0/0
