@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Remote ControlS
+Description: Node exporter
 Resources:
   EC2Instance:
     Type: 'AWS::EC2::Instance'
