@@ -1,10 +1,5 @@
 version: 2.1
-# Use a package of configuration called an orb.
-# orbs:
-  # Choose either one of the orbs below
-  # welcome: circleci/welcome-orb@0.4.1
-  # aws-cli: circleci/aws-cli@2.0.3
-# Define the jobs we want to run for this project
+
 jobs:
   create_infrastructure: 
       docker:
@@ -18,44 +13,8 @@ jobs:
                 --template-file ubuntu.yml \
                 --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
                 --region us-east-1
-  setup_ansible:
-    docker:
-      - image : python:3.7-alpine3.11
-    steps:
-      - checkout
-      - add_ssh_keys:
-            # You can get this ID in the section where you registered the SSH Key
-            fingerprints: ["97:df:e3:93:cf:f1:1a:c5:82:39:71:18:04:b9:6a:ac"] 
-      - run:
-          name: Install Ansible
-          command: |
-            apk add --update ansible
-      - run:
-          name: Run Playbook and Configure server
-          command: |
-            ansible-playbook -i inventory main-remote.yml
-  smoke_test:
-    docker:
-      - image: alpine:latest
-    steps:
-      - run: apk add --update curl
-      - run:
-          name: smoke test
-          command: |
-            URL="https://blog.udacity.com/"
-            # Test if website exists
-            if curl -s --head ${URL} 
-            then
-              return 0
-            else
-              return 1
-            fi
-# Sequential workflow
 workflows:
   create_infrastructure:
       jobs:
         - create_infrastructure
-        - setup_ansible:
-            requires: [create_infrastructure]
-        - smoke_test:
-            requires: [setup_ansible]
+  
