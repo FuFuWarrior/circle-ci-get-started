@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Node Exporter
+Description: Prometheus
 Resources:
   EC2Instance:
     Type: 'AWS::EC2::Instance'
@@ -32,4 +32,8 @@ Resources:
         - IpProtocol: tcp
           FromPort: '9030'
           ToPort: '9030'
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: '9100'
+          ToPort: '9100'
           CidrIp: 0.0.0.0/0
